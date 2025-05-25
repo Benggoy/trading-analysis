@@ -1,0 +1,90 @@
+# Dependabot Configuration for Automated Dependency Updates
+# This file configures automated dependency updates for better security and maintenance
+
+version: 2
+updates:
+  # Python dependencies
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "Benggoy"
+    assignees:
+      - "Benggoy"
+    commit-message:
+      prefix: "⬆️"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "security"
+    allow:
+      # Allow version updates for direct and indirect dependencies
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+    # Group related updates together
+    groups:
+      data-science:
+        patterns:
+          - "numpy"
+          - "pandas" 
+          - "matplotlib"
+          - "seaborn"
+          - "scipy"
+      financial-data:
+        patterns:
+          - "yfinance"
+          - "pandas-datareader"
+          - "quandl"
+      testing:
+        patterns:
+          - "pytest*"
+          - "coverage"
+          - "*test*"
+      development:
+        patterns:
+          - "black"
+          - "flake8"
+          - "isort"
+          - "mypy"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+    commit-message:
+      prefix: "⬆️"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+  # Docker (if applicable)
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: "⬆️"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "docker"
+
+# Security updates - immediate updates for security vulnerabilities
+security-updates:
+  - package-ecosystem: "pip"
+    schedule:
+      interval: "daily"
+    commit-message:
+      prefix: "🔒"
+      include: "scope"
+    labels:
+      - "security"
+      - "critical"

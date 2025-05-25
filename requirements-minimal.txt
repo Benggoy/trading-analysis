@@ -1,0 +1,21 @@
+# Minimal requirements for core trading analysis functionality
+# Use this file if you're having dependency conflicts with requirements.txt
+
+# Essential data analysis
+numpy>=1.21.0
+pandas>=1.5.0
+
+# Market data
+yfinance>=0.2.18
+
+# Basic visualization
+matplotlib>=3.5.0
+
+# Technical analysis (pure Python - no compilation issues)
+pandas-ta>=0.3.14b
+
+# Configuration
+python-dotenv>=0.19.0
+
+# Optional: Interactive charts
+plotly>=5.10.0
